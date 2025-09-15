@@ -13,6 +13,8 @@ public class ArrayListMultiSet extends MultiSet {
     @Override
     void add(int item) {
 
+        this.lst.add(item);
+
     }
 
     /**
@@ -23,7 +25,17 @@ public class ArrayListMultiSet extends MultiSet {
      */
     @Override
     void remove(int item) {
+        int s = -1;
+        for (int i = 0; i < this.lst.size(); i++) {
+            if (this.lst.get(i) == item) {
+                s = i;
+                break;
+            }
+        }
 
+        if (s != -1) {
+            this.lst.remove(s);
+        }
     }
 
     /**
@@ -34,6 +46,9 @@ public class ArrayListMultiSet extends MultiSet {
      */
     @Override
     boolean contains(int item) {
+        if (this.lst.contains(item)) {
+            return true;
+        }
         return false;
     }
 
@@ -42,7 +57,7 @@ public class ArrayListMultiSet extends MultiSet {
      */
     @Override
     boolean isEmpty() {
-        return false;
+        return this.lst.size() == 0;
     }
 
     /**
@@ -53,7 +68,16 @@ public class ArrayListMultiSet extends MultiSet {
      */
     @Override
     int count(int item) {
-        return -1;
+
+        int count = 0;
+
+        for (int i = 0; i < this.lst.size(); i++) {
+            if (this.lst.get(i) == item) {
+                count++;
+            }
+        }
+
+        return count;
     }
 
     /**
@@ -61,6 +85,6 @@ public class ArrayListMultiSet extends MultiSet {
      */
     @Override
     int size() {
-        return -1;
+        return this.lst.size();
     }
 }
