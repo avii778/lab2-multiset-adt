@@ -29,7 +29,7 @@ public class BST {
 
 
     public boolean isEmpty() {
-        return false; // TODO implement me!
+        return  root == null;
     }
 
     public boolean contains(int item) {
@@ -47,12 +47,33 @@ public class BST {
 
 
     public void insert(int item) {
-
+        if (this.isEmpty()) {
+            this.root = item;
+            this.left = new BST();
+            this.right = new BST();
+        }
+        else if (item <= this.root) {
+            this.left.insert(item);
+        }
+        else {
+            this.right.insert(item);
+        }
     }
 
 
     public void delete(int item) {
-
+        if (this.isEmpty()) {
+            pass
+        }
+        else if (this.root == item) {
+            this.deleteRoot();
+        }
+        else if (item < this.root) {
+            this.left.delete(item);
+        }
+        else {
+            this.right.delete(item);
+        }
     }
 
     private void deleteRoot() {
